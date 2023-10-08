@@ -49,6 +49,8 @@ Tests that could've possibly prevented those deaths:
 - **Usability tests**. Maybe a user would've caused the race condition.
 - More descriptive errors to show the **severity** of the error and understand what went wrong.
 
+_Below image is a YouTube link._
+
 [![how a simple bug in software ended 6 lives](https://i.ytimg.com/vi/41Gv-zzICIQ/maxresdefault.jpg)](https://youtu.be/41Gv-zzICIQ)
 
 I'm not sure that I got all the details correct, but I tried my best. It's a truly horrifying story.
