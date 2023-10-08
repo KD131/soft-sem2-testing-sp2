@@ -20,6 +20,39 @@
 
 > Find a story where a software system defect had a bad outcome. Describe what happened. Can you identify a test that would have prevented it?
 
+Between 1985 and 1987, a software bug in Therac-25, a radiation therapy machine, killed 6 people.
+
+The machine could do two kinds of treatment, X-ray (photon) and electron, with very different dosages.
+It would use a turntable to mechanically switch between those modes, and also normal, visible light. It took 8 seconds to move this turntable.
+
+It was fully controlled by software, and, in fact, earlier models _had_ hardware locks to prevent catastrophically high dosages,
+but these safety measures were removed in the Therac-25 and replaced with software checks.
+
+The machine was programmed by a single developer in assembly, and it was never tested until production when it was used on real patients in the hospital.
+
+If an operator were to mistakenly initiate X-ray treatment and then correct the error within the 8 seconds it took to move the turntable,
+those inputs would be ignored as the program wasn't meant to accept inputs in that phase. This is a _race condition_.
+
+Patients could be prescribed electron therapy but receive X-rays roughly 100 times the intended dosage
+because the machine had initially been set for X-ray, and the filter had not moved into place.
+
+Machine displayed a `Malfunction 54` error message, which in the manual indicates a `dose input 2` error. This means either too high or too low dosage.
+
+
+Tests that could've possibly prevented those deaths:
+
+- **Pair programming** or any kind of **code review** during development.
+- **Negative system tests**: Test everything that could possibly go wrong.
+  - Give bad input and then try to correct it.
+- **Fuzzing**: Keyboard smashing bad input could've produced the race condition.
+- **Regression testing**: Make sure the machine still worked after removing the hardware safety measure.
+- **Usability tests**. Maybe a user would've caused the race condition.
+- More descriptive errors to show the **severity** of the error and understand what went wrong.
+
+[![how a simple bug in software ended 6 lives](https://i.ytimg.com/vi/41Gv-zzICIQ/maxresdefault.jpg)](https://youtu.be/41Gv-zzICIQ)
+
+I'm not sure that I got all the details correct, but I tried my best. It's a truly horrifying story.
+
 ## 2. Two Katas
 
 > Complete the following using BDD.
