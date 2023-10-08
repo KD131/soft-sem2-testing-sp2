@@ -16,6 +16,29 @@
 
 > Identify the types of testing you would perform on a computer mouse, to make sure that it is of the highest quality.
 
+I'm interpreting this as meaning the physical, peripheral device. Many tests can be applied to every button and whatnot on the mouse.
+
+I'm not 100% what category of test some of these would fall under. Some of it is just verifying some kind of measurement.
+
+- **Unit test**: Switches can trigger.
+- **Integration test**: Pressing mouse buttons actually trigger the switches.
+- Consistent and right amount of pressure to click, drag, and release.
+- **Stress test**: Make sure it can withstand millions of clicks for a long lifetime.
+  - (make sure the micro-switches aren't some cheap, Chinese crap, **Logitech**)
+- **Usability**: Ergonomics, comfort, and loudness.
+- Loudness can also be quantified with decibels and tested/regulated that way.
+- Correct weight.
+- Drag/friction on teflon feet.
+- **Stress test**: Durability of feet.
+- **Stress test**: Cable fraying.
+- **Unit test**: Accuracy of laser/optical sensor.
+  - Frequency
+  - Wavelength
+  - Poll rate
+  - Lift height
+- Make sure the laser isn't strong enough to cause eye injury.
+- Make sure old mouse ball is returned to museum when you're done playing with it.
+
 ### 1.2. Catastrophic Failure
 
 > Find a story where a software system defect had a bad outcome. Describe what happened. Can you identify a test that would have prevented it?
