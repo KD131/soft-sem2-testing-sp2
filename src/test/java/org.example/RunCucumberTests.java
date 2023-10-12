@@ -9,5 +9,5 @@ import org.junit.runner.RunWith;
         features = {"classpath:features/StringReversal.feature"},
         glue = {"org.example"}
 )
-public class StringReversalRunTests {
+public class RunCucumberTests {
 }
