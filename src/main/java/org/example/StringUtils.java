@@ -58,6 +58,10 @@ public class StringUtils {
         org.openjdk.jmh.Main.main(args);
     }
 
+    public static String upperCase(String input) {
+        return null;
+    }
+
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @Fork(value = 1)

@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class StringUtilsStepdefs {
     private String inputString;
     private String reversedString;
+    private String upperCaseString;
 
     @Given("I have a string {string}")
     public void iHaveAString(String arg0) {
@@ -27,9 +28,11 @@ public class StringUtilsStepdefs {
 
     @When("I convert the string to upper case")
     public void iConvertTheStringToUpperCase() {
+        upperCaseString = StringUtils.upperCase(inputString);
     }
 
     @Then("I get {string}")
     public void iGet(String arg0) {
+        assertEquals(arg0, upperCaseString);
     }
 }

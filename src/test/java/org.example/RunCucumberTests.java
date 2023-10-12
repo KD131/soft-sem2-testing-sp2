@@ -6,7 +6,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"classpath:features/StringReversal.feature"},
+        features = {
+                "classpath:features/StringReversal.feature",
+                "classpath:features/StringUpperCase.feature"
+        },
         glue = {"org.example"}
 )
 public class RunCucumberTests {
