@@ -1,14 +1,14 @@
 # Assignment 2
 
 - [1. Reflections](#1-reflections)
-  - [1.1. Computer Mouse](#11-computer-mouse)
-  - [1.2. Catastrophic Failure](#12-catastrophic-failure)
+    - [1.1. Computer Mouse](#11-computer-mouse)
+    - [1.2. Catastrophic Failure](#12-catastrophic-failure)
 - [2. Two Katas](#2-two-katas)
-  - [2.1. String Utility](#21-string-utility)
-  - [2.2. Bowling Game Kata](#22-bowling-game-kata)
+    - [2.1. String Utility](#21-string-utility)
+    - [2.2. Bowling Game Kata](#22-bowling-game-kata)
 - [3. Investigation Of Tools](#3-investigation-of-tools)
-  - [3.1. JUnit 5](#31-junit-5)
-  - [3.2. Mocking Frameworks](#32-mocking-frameworks)
+    - [3.1. JUnit 5](#31-junit-5)
+    - [3.2. Mocking Frameworks](#32-mocking-frameworks)
 
 ## 1. Reflections
 
@@ -16,15 +16,17 @@
 
 > Identify the types of testing you would perform on a computer mouse, to make sure that it is of the highest quality.
 
-I'm interpreting this as meaning the physical, peripheral device. Many tests can be applied to every button and whatnot on the mouse.
+I'm interpreting this as meaning the physical, peripheral device. Many tests can be applied to every button and whatnot
+on the mouse.
 
-I'm not 100% what category of test some of these would fall under. Some of it is just verifying some kind of measurement.
+I'm not 100% what category of test some of these would fall under. Some of it is just verifying some kind of
+measurement.
 
 - **Unit test**: Switches can trigger.
 - **Integration test**: Pressing mouse buttons actually trigger the switches.
 - Consistent and right amount of pressure to click, drag, and release.
 - **Stress test**: Make sure it can withstand millions of clicks for a long lifetime.
-  - (make sure the micro-switches aren't some cheap, Chinese crap, **Logitech**)
+    - (make sure the micro-switches aren't some cheap, Chinese crap, **Logitech**)
 - **Usability**: Ergonomics, comfort, and loudness.
 - Loudness can also be quantified with decibels and tested/regulated that way.
 - Correct weight.
@@ -32,41 +34,46 @@ I'm not 100% what category of test some of these would fall under. Some of it is
 - **Stress test**: Durability of feet.
 - **Stress test**: Cable fraying.
 - **Unit test**: Accuracy of laser/optical sensor.
-  - Frequency
-  - Wavelength
-  - Poll rate
-  - Lift height
+    - Frequency
+    - Wavelength
+    - Poll rate
+    - Lift height
 - Make sure the laser isn't strong enough to cause eye injury.
 - Make sure old mouse ball is returned to museum when you're done playing with it.
 
 ### 1.2. Catastrophic Failure
 
-> Find a story where a software system defect had a bad outcome. Describe what happened. Can you identify a test that would have prevented it?
+> Find a story where a software system defect had a bad outcome. Describe what happened. Can you identify a test that
+> would have prevented it?
 
 Between 1985 and 1987, a software bug in Therac-25, a radiation therapy machine, killed 6 people.
 
 The machine could do two kinds of treatment, X-ray (photon) and electron, with very different dosages.
-It would use a turntable to mechanically switch between those modes, and also normal, visible light. It took 8 seconds to move this turntable.
+It would use a turntable to mechanically switch between those modes, and also normal, visible light. It took 8 seconds
+to move this turntable.
 
-It was fully controlled by software, and, in fact, earlier models _had_ hardware locks to prevent catastrophically high dosages,
+It was fully controlled by software, and, in fact, earlier models _had_ hardware locks to prevent catastrophically high
+dosages,
 but these safety measures were removed in the Therac-25 and replaced with software checks.
 
-The machine was programmed by a single developer in assembly, and it was never tested until production when it was used on real patients in the hospital.
+The machine was programmed by a single developer in assembly, and it was never tested until production when it was used
+on real patients in the hospital.
 
-If an operator were to mistakenly initiate X-ray treatment and then correct the error within the 8 seconds it took to move the turntable,
+If an operator were to mistakenly initiate X-ray treatment and then correct the error within the 8 seconds it took to
+move the turntable,
 those inputs would be ignored as the program wasn't meant to accept inputs in that phase. This is a _race condition_.
 
 Patients could be prescribed electron therapy but receive X-rays roughly 100 times the intended dosage
 because the machine had initially been set for X-ray, and the filter had not moved into place.
 
-Machine displayed a `Malfunction 54` error message, which in the manual indicates a `dose input 2` error. This means either too high or too low dosage.
-
+Machine displayed a `Malfunction 54` error message, which in the manual indicates a `dose input 2` error. This means
+either too high or too low dosage.
 
 Tests that could've possibly prevented those deaths:
 
 - **Pair programming** or any kind of **code review** during development.
 - **Negative system tests**: Test everything that could possibly go wrong.
-  - Give bad input and then try to correct it.
+    - Give bad input and then try to correct it.
 - **Fuzzing**: Keyboard smashing bad input could've produced the race condition.
 - **Regression testing**: Make sure the machine still worked after removing the hardware safety measure.
 - **Usability tests**. Maybe a user would've caused the race condition.
@@ -90,7 +97,13 @@ I'm not sure that I got all the details correct, but I tried my best. It's a tru
 > - Capitalize string (aBc -> ABC)
 > - Lowercase string (aBc -> abc)
 >
-> Don’t use any built-in string utility – create your own. Remember, the exercise here is to use BDD, not to deliver a working utility without tests. If there are no tests in the solution, it won’t be accepted.
+> Don’t use any built-in string utility – create your own. Remember, the exercise here is to use BDD, not to deliver a
+> working utility without tests. If there are no tests in the solution, it won’t be accepted.
+
+- [Features](/src/test/resources/features)
+- [Step definitions](/src/test/java/org/example/StringUtilsStepdefs.java)
+- [Tests](/src/test/java/org/example/StringUtilsTest.java)
+- [Code](/src/main/java/org/example/StringUtils.java)
 
 ### 2.2. Bowling Game Kata
 
@@ -114,7 +127,8 @@ I'm not sure that I got all the details correct, but I tried my best. It's a tru
 
 ### 3.2. Mocking Frameworks
 
-> Investigate mocking frameworks for your preferred language. Choose at least two frameworks, and answer the questions. (One could be Mockito, which we saw in class.)
+> Investigate mocking frameworks for your preferred language. Choose at least two frameworks, and answer the
+> questions. (One could be Mockito, which we saw in class.)
 >
 > - What are their similarities?
 > - What are their differences?
