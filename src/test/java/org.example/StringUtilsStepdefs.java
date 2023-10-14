@@ -10,6 +10,7 @@ public class StringUtilsStepdefs {
     private String inputString;
     private String reversedString;
     private String upperCaseString;
+    private String lowerCaseString;
 
     @Given("I have a string {string}")
     public void iHaveAString(String arg0) {
@@ -21,8 +22,8 @@ public class StringUtilsStepdefs {
         reversedString = StringUtils.reverse(inputString);
     }
 
-    @Then("I should get {string}")
-    public void iShouldGet(String arg0) {
+    @Then("I get the reversed string, {string}")
+    public void iGetTheReversedString(String arg0) {
         assertEquals(arg0, reversedString);
     }
 
@@ -31,8 +32,18 @@ public class StringUtilsStepdefs {
         upperCaseString = StringUtils.upperCase(inputString);
     }
 
-    @Then("I get {string}")
-    public void iGet(String arg0) {
+    @Then("I get the upper case string, {string}")
+    public void iGetTheUpperCaseString(String arg0) {
         assertEquals(arg0, upperCaseString);
+    }
+
+    @When("I convert the string to lower case")
+    public void iConvertTheStringToLowerCase() {
+        lowerCaseString = StringUtils.lowerCase(inputString);
+    }
+
+    @Then("I get the lower case string, {string}")
+    public void iGetTheLowerCaseString(String arg0) {
+        assertEquals(arg0, lowerCaseString);
     }
 }

@@ -8,7 +8,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {
                 "classpath:features/StringReversal.feature",
-                "classpath:features/StringUpperCase.feature"
+                "classpath:features/StringUpperCase.feature",
+                "classpath:features/StringLowerCase.feature"
         },
         glue = {"org.example"}
 )
