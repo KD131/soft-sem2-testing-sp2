@@ -51,6 +51,15 @@ public class StringUtils {
     }
 
     public static String upperCase(String input) {
-        return null;
+        if (input == null) {
+            throw new IllegalArgumentException("Input cannot be null");
+        }
+        char[] output = input.toCharArray();
+        for (int i = 0; i < output.length; i++) {
+            if (Character.isLowerCase(output[i])) {
+                output[i] = (char) (output[i] - 32);
+            }
+        }
+        return new String(output);
     }
 }

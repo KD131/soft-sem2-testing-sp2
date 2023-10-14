@@ -78,4 +78,12 @@ class StringUtilsTest {
         String actual = StringUtils.upperCase(input);
         assertEquals(expected, actual);
     }
+
+    @Test
+    void nonAsciiString() {
+        String input = "Rüdölf med den røde næse";
+        String expected = "RÜDÖLF MED DEN RØDE NÆSE";
+        String actual = StringUtils.upperCase(input);
+        assertEquals(expected, actual);
+    }
 }
