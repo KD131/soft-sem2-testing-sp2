@@ -125,6 +125,24 @@ I'm not sure that I got all the details correct, but I tried my best. It's a tru
 > - `@Nested`
 > - `assumeFalse`, `assumeTrue`
 
+- `@Tag`: Applies a tag to a test. Can be used to filter tests and only execute a subset of tests that have a certain
+  tag.
+- `@Disabled`: Disables a test. Can be used to temporarily disable a test without deleting it. Shouldn't be overused. If
+  a test fails, find out why and try to fix it. Don't just disable it. Can also be applied
+  conditionally.
+- `@RepeatedTest`: Repeats a test a certain amount of times. Can be used to check if a test is flaky, i.e. if it fails
+  sometimes and passes other times.
+- `@BeforeEach`, `@AfterEach`: Runs a method before/after each test. Can be used to set up and tear down test
+  environment for each test. E.g. recreating test objects or populating a database, then deleting it after the test.
+- `@BeforeAll`, `@AfterAll`: Same as above, but only runs once before/after all tests. Can be used to set up and tear
+  down test environment for all tests. E.g. creating a database connection pool.
+- `@DisplayName`: Sets a custom name for a test. Can be used to make test names more readable.
+- `@Nested`: Creates a nested test class. Can be used to group tests together.
+- `assumeFalse`, `assumeTrue`: Assumptions that must be correct for the test to run. Skips the test if assumptions fail.
+  Can be used to skip tests that are not relevant for the current environment, e.g. specific OS or production stage.
+  Failing the assumption
+  just skips the test, it doesn't stop the build.
+
 ### 3.2. Mocking Frameworks
 
 > Investigate mocking frameworks for your preferred language. Choose at least two frameworks, and answer the
