@@ -62,4 +62,17 @@ public class StringUtils {
         }
         return new String(output);
     }
+
+    public static String lowerCase(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException("Input cannot be null");
+        }
+        char[] output = input.toCharArray();
+        for (int i = 0; i < output.length; i++) {
+            if (Character.isUpperCase(output[i])) {
+                output[i] = (char) (output[i] + 32);
+            }
+        }
+        return new String(output);
+    }
 }
