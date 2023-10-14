@@ -80,10 +80,58 @@ class StringUtilsTest {
     }
 
     @Test
-    void nonAsciiString() {
+    void upperCaseNonAsciiString() {
         String input = "Rüdölf med den røde næse";
         String expected = "RÜDÖLF MED DEN RØDE NÆSE";
         String actual = StringUtils.upperCase(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void lowerCaseSingleWord() {
+        String input = "Hello";
+        String expected = "hello";
+        String actual = StringUtils.lowerCase(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void lowerCaseMultipleWords() {
+        String input = "Hello World";
+        String expected = "hello world";
+        String actual = StringUtils.lowerCase(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void lowerCaseEmptyString() {
+        String input = "";
+        String expected = "";
+        String actual = StringUtils.lowerCase(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void lowerCaseNullString() {
+        String input = null;
+        assertThrows(IllegalArgumentException.class, () -> {
+            StringUtils.lowerCase(input);
+        });
+    }
+
+    @Test
+    void lowerCaseMixedCaseString() {
+        String input = "HeLlO wOrLd";
+        String expected = "hello world";
+        String actual = StringUtils.lowerCase(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void lowerCaseNonAsciiString() {
+        String input = "RÜdÖLF mED dEn rØde nÆSE";
+        String expected = "rüdölf med den røde næse";
+        String actual = StringUtils.lowerCase(input);
         assertEquals(expected, actual);
     }
 }
