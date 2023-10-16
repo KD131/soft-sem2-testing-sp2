@@ -13,6 +13,12 @@ public class BowlingGameTest {
         g = new Game();
     }
 
+    private void rollMany(int n, int pins) {
+        for (int i = 0; i < n; i++) {
+            g.roll(pins);
+        }
+    }
+
     @Test
     void gutterGame() {
         for (int i = 0; i < 20; i++) {
@@ -27,5 +33,14 @@ public class BowlingGameTest {
             g.roll(1);
         }
         assertEquals(20, g.score());
+    }
+
+    @Test
+    void oneSpare() {
+        g.roll(5);
+        g.roll(5); // spare
+        g.roll(3);
+        rollMany(17, 0);
+        assertEquals(16, g.score());
     }
 }
