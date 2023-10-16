@@ -43,4 +43,13 @@ public class BowlingGameTest {
         rollMany(17, 0);
         assertEquals(16, g.score());
     }
+
+    @Test
+    void oneStrike() {
+        g.roll(10); // strike
+        g.roll(3);
+        g.roll(4);
+        rollMany(16, 0);
+        assertEquals(24, g.score());
+    }
 }
