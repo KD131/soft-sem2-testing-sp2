@@ -51,23 +51,22 @@ measurement.
 
 Between 1985 and 1987, a software bug in Therac-25, a radiation therapy machine, killed 6 people.
 
-The machine could do two kinds of treatment, X-ray (photon) and electron, with very different dosages.
-It would use a turntable to mechanically switch between those modes, and also normal, visible light. It took 8 seconds
-to move this turntable.
+The machine could do two kinds of treatment, X-ray (photon) and electron, with very different dosages. It would use a
+turntable to mechanically switch between those modes, and also normal, visible light. It took 8 seconds to move this
+turntable.
 
 It was fully controlled by software, and, in fact, earlier models _had_ hardware locks to prevent catastrophically high
-dosages,
-but these safety measures were removed in the Therac-25 and replaced with software checks.
+dosages, but these safety measures were removed in the Therac-25 and replaced with software checks.
 
 The machine was programmed by a single developer in assembly, and it was never tested until production when it was used
 on real patients in the hospital.
 
 If an operator were to mistakenly initiate X-ray treatment and then correct the error within the 8 seconds it took to
-move the turntable,
-those inputs would be ignored as the program wasn't meant to accept inputs in that phase. This is a _race condition_.
+move the turntable, those inputs would be ignored as the program wasn't meant to accept inputs in that phase. This is a
+_race condition_.
 
-Patients could be prescribed electron therapy but receive X-rays roughly 100 times the intended dosage
-because the machine had initially been set for X-ray, and the filter had not moved into place.
+Patients could be prescribed electron therapy but receive X-rays roughly 100 times the intended dosage because the
+machine had initially been set for X-ray, and the filter had not moved into place.
 
 Machine displayed a `Malfunction 54` error message, which in the manual indicates a `dose input 2` error. This means
 either too high or too low dosage.
@@ -136,8 +135,7 @@ I'm not sure that I got all the details correct, but I tried my best. It's a tru
 - `@Tag`: Applies a tag to a test. Can be used to filter tests and only execute a subset of tests that have a certain
   tag.
 - `@Disabled`: Disables a test. Can be used to temporarily disable a test without deleting it. Shouldn't be overused. If
-  a test fails, find out why and try to fix it. Don't just disable it. Can also be applied
-  conditionally.
+  a test fails, find out why and try to fix it. Don't just disable it. Can also be applied conditionally.
 - `@RepeatedTest`: Repeats a test a certain amount of times. Can be used to check if a test is flaky, i.e. if it fails
   sometimes and passes other times.
 - `@BeforeEach`, `@AfterEach`: Runs a method before/after each test. Can be used to set up and tear down test
@@ -148,8 +146,7 @@ I'm not sure that I got all the details correct, but I tried my best. It's a tru
 - `@Nested`: Creates a nested test class. Can be used to group tests together.
 - `assumeFalse`, `assumeTrue`: Assumptions that must be correct for the test to run. Skips the test if assumptions fail.
   Can be used to skip tests that are not relevant for the current environment, e.g. specific OS or production stage.
-  Failing the assumption
-  just skips the test, it doesn't stop the build.
+  Failing the assumption just skips the test, it doesn't stop the build.
 
 ### 3.2. Mocking Frameworks
 
