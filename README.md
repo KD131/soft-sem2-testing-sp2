@@ -9,6 +9,9 @@
 - [3. Investigation Of Tools](#3-investigation-of-tools)
     - [3.1. JUnit 5](#31-junit-5)
     - [3.2. Mocking Frameworks](#32-mocking-frameworks)
+        - [3.2.1. Similarities](#321-similarities)
+        - [3.2.2. Differences](#322-differences)
+        - [3.2.3. Preference](#323-preference)
 
 ## 1. Reflections
 
@@ -151,3 +154,33 @@ I'm not sure that I got all the details correct, but I tried my best. It's a tru
 > - What are their similarities?
 > - What are their differences?
 > - Which one would you prefer, if any, and why?
+
+The ones I'll compare are [Mockito](https://site.mockito.org/), [JMockit](https://jmockit.github.io/),
+and [EasyMock](https://easymock.org/). Very much inspired
+by [this article](https://www.baeldung.com/mockito-vs-easymock-vs-jmockit).
+
+#### 3.2.1. Similarities
+
+They really are all quite similar in that they do much the same thing. They all create mock objects that can be injected
+into the code under test.
+
+They all specify what the mock object should do when a method is called and then verify that the method was called.
+
+#### 3.2.2. Differences
+
+The differences are pretty minor. It's mostly different names for the annotations and methods.
+
+One notable difference in syntax is that JMockit uses `Expectations` and `Verifications` classes to define what a mock
+object should do, whereas the other two use methods, `when` for Mockito, `expect` for EasyMock, and `verify` for both.
+
+The `Expectation` object uses double braces syntax which stands out a bit.
+
+Easymock uses the record/replay/verify pattern, whereas Mockito doesn't explicitly need a replay step.
+
+#### 3.2.3. Preference
+
+I'll prefer Mockito because it has by far the most stars on GitHub. This signifies a bigger community and greater
+likelihood to be supported and maintained in the future. Additionally, it would be easier to find help and resources,
+and other developers would be more likely to be familiar with it.
+
+At the time of writing, Mockito is in the lead with 14.2k stars, EasyMock has 800, and JMockit has 451.
